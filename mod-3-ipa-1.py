@@ -32,11 +32,10 @@ def shift_letter(letter, shift):
     # Replace `pass` with your code. 
     # Stay within the function. Only use the parameters as input. The function should return your answer.
 
-     if letter == ' ':
+    if letter == " ":
         return(' ')
-    else : return (chr((((ord(letter)-65+shift)%26)+65)))
-
-shift_letter(letter, shift)
+    else : 
+        return (chr((((ord(letter)-65+shift)%26)+65)))
 
 def caesar_cipher(message, shift):
     '''Caesar Cipher. 
@@ -56,11 +55,8 @@ def caesar_cipher(message, shift):
     '''
     # Replace `pass` with your code. 
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    
     for x in message:
         print((((chr((((ord((x))-65+shift)%26)+65))))),end="")
-    
-caesar_cipher(message, shift)
 
 def shift_by_letter(letter, letter_shift):
     '''Shift By Letter. 
@@ -91,8 +87,6 @@ def shift_by_letter(letter, letter_shift):
     if letter == ' ':
         return(' ')
     else : return(chr((((ord(letter)-65+shift)%26)+65)))
-
-shift_by_letter(letter, letter_shift)
 
 def vigenere_cipher(message, key):
     '''Vigenere Cipher. 
@@ -154,10 +148,7 @@ def vigenere_cipher(message, key):
                 ans += chr (ord(message[i]) + ord(key[i]) - 91)
     
     return ans
-
-vigenere_cipher(message, key)
     
-
 def scytale_cipher(message, shift):
     '''Scytale Cipher.
     15 points.
@@ -205,7 +196,7 @@ def scytale_cipher(message, shift):
     # Replace `pass` with your code. 
     # Stay within the function. Only use the parameters as input. The function should return your answer.
     
-      while len(message)%shift != 0:
+    while len(message)%shift != 0:
         message += "_"
         if len(message)%shift == 0:
             break
@@ -214,8 +205,8 @@ def scytale_cipher(message, shift):
         cipher = message[((i // shift) + (len(message) // shift) * (i % shift))]
         for j in cipher:
             print(j, end="")
-        
-scytale_cipher(message, shift)
+            
+scytale_cipher("INFORMATION_AGE",8)
 
 def scytale_decipher(message, shift):
     '''Scytale De-cipher.
@@ -241,16 +232,16 @@ def scytale_decipher(message, shift):
     # Replace `pass` with your code. 
     # Stay within the function. Only use the parameters as input. The function should return your answer.
     
-    list = []
-    answer = " "
-    ref_list = [i for i in range (0, shift)]
-
-    for i in ref_list:
-        for j in range (0, int(len(message)/shift)):
-            list.append(i + shift*j)
-        for i in list:
-            answer += message[i]
-
-            return answer
-
-scytale_decipher(message,shift)
+    message=str(message)
+    shift=int(shift)
+    final_message=""
+    
+    while(len(final_message)<len(message)):
+        final_message += "_"
+        
+    for i,m in enumerate(message):
+        new_letter_index = (i // shift) + (len(message) // shift) // shift) * (I % shift)
+        for j,n in enumerate(final_message):
+            final_message = final_message[:new_letter_index] + m + final_message[new_letter_index+1:]
+    return final_message
+    
