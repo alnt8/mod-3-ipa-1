@@ -240,7 +240,7 @@ def scytale_decipher(message, shift):
         final_message += "_"
         
     for i,m in enumerate(message):
-        new_letter_index = (i // shift) + (len(message) // shift) // shift) * (I % shift)
+        new_letter_index = (i // shift) + (len(message) // shift) // (shift) * (I % shift)
         for j,n in enumerate(final_message):
             final_message = final_message[:new_letter_index] + m + final_message[new_letter_index+1:]
     return final_message
