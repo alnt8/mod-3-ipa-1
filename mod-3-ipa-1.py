@@ -55,8 +55,14 @@ def caesar_cipher(message, shift):
     '''
     # Replace `pass` with your code. 
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    for x in message:
-        print((((chr((((ord((x))-65+shift)%26)+65))))),end="")
+    caesar_cipher = ""
+    for ch in message:
+        if ch.isalpha():
+            final_letter = (chr(((ord(ch)-65+shift)%26)+65))
+            caesar_cipher += final_letter
+        else:
+            caesar_cipher += ch
+    return caesar_cipher
 
 def shift_by_letter(letter, letter_shift):
     '''Shift By Letter. 
@@ -206,7 +212,6 @@ def scytale_cipher(message, shift):
         for j in cipher:
             print(j, end="")
             
-scytale_cipher("INFORMATION_AGE",8)
 
 def scytale_decipher(message, shift):
     '''Scytale De-cipher.
@@ -232,16 +237,11 @@ def scytale_decipher(message, shift):
     # Replace `pass` with your code. 
     # Stay within the function. Only use the parameters as input. The function should return your answer.
     
-    message=str(message)
-    shift=int(shift)
-    final_message=""
-    
-    while(len(final_message)<len(message)):
-        final_message += "_"
-        
-    for i,m in enumerate(message):
-        new_letter_index = (i // shift) + (len(message) // shift) // (shift) * (I % shift)
-        for j,n in enumerate(final_message):
-            final_message = final_message[:new_letter_index] + m + final_message[new_letter_index+1:]
-    return final_message
+    decrypted = ""
+    for i in range(0,len(message)):
+        columns = len(message) // shift
+        place = (i // columns) + shift * (i % columns)
+        decrypted += message[place]
+    return decrypted
+
     
