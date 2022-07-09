@@ -90,9 +90,20 @@ def shift_by_letter(letter, letter_shift):
     # Replace `pass` with your code. 
     # Stay within the function. Only use the parameters as input. The function should return your answer.
     
-    if letter == ' ':
-        return(' ')
-    else : return(chr((((ord(letter)-65+shift)%26)+65)))
+     alphabet = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
+    
+    if letter == " ":
+        return letter
+    
+    else:
+        index = alphabet.index(letter)
+        index2 = alphabet.index(letter_shift)
+        index += index2
+        
+    while (index) > 25:
+        index -= 26
+        
+    return alphabet[index]
 
 def vigenere_cipher(message, key):
     '''Vigenere Cipher. 
